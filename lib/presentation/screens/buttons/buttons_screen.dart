@@ -26,18 +26,97 @@ class _ButtonsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-      child: SizedBox(
-        child: Wrap(
-          spacing: 10,
-          children: [
-            TextButton(onPressed: () {}, child: const Text('Text Button')),
-            ElevatedButton(onPressed: () {}, child: const Text('Elevated Button')),
-            ElevatedButton(onPressed: null, child: const Text('Elevated Disabled Button')),
-            OutlinedButton(onPressed: () {}, child: const Text('Outlined Button')),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
-          ],
+    final colors = Theme.of(context).colorScheme;
+
+    return SizedBox(
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        child: SizedBox(
+          child: Wrap(
+            spacing: 10,
+            alignment: WrapAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text('Elevated Button'),
+              ),
+              const ElevatedButton(
+                onPressed: null,
+                child: const Text('Elevated Disabled Button'),
+              ),
+              ElevatedButton.icon(
+                onPressed: () {},
+                label: Text("Elevated Icon Button"),
+                icon: Icon(Icons.add),
+              ),
+
+              FilledButton(
+                onPressed: () {},
+                child: const Text('Filled Button'),
+              ),
+              FilledButton.icon(
+                onPressed: () {},
+                label: Text("Filled Icon Button"),
+                icon: Icon(Icons.alarm),
+              ),
+
+              OutlinedButton(
+                onPressed: () {},
+                child: const Text('Outlined Button'),
+              ),
+              OutlinedButton.icon(
+                onPressed: () {},
+                label: Text("Outlined Icon Button"),
+                icon: Icon(Icons.add),
+              ),
+
+              TextButton(onPressed: () {}, child: const Text('Text Button')),
+              TextButton.icon(
+                onPressed: () {},
+                label: Text("Text Icon Button"),
+                icon: Icon(Icons.add),
+              ),
+
+              const _CustomButton(),
+
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.app_registration_outlined),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.app_registration_outlined),
+                style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(colors.primary),
+                  iconColor: WidgetStatePropertyAll(Colors.white)
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _CustomButton extends StatelessWidget {
+  const _CustomButton();
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Material(
+        color: colors.primary,
+        child: InkWell(
+          onTap: (){},
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Text("Registrate!", style: TextStyle(color: Colors.white)),
+          ),
         ),
       ),
     );
