@@ -50,7 +50,6 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     pageViewController.addListener(() {
@@ -65,7 +64,6 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     pageViewController.dispose();
     super.dispose();
   }
