@@ -112,6 +112,15 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
                 width: double.infinity,
                 height: 300,
                 fit: BoxFit.cover,
+                imageErrorBuilder: (context, error, stackTrace) {
+                  print(error.toString());
+                  return Container(
+                    height: 300,
+                    color: Colors.black12,
+                    alignment: Alignment.center,
+                    child: const Icon(Icons.broken_image_outlined),
+                  );
+                },
               );
             },
           ),

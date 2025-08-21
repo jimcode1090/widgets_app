@@ -4,23 +4,24 @@ import 'package:widgets_app/config/menu/menu_items.dart';
 import 'package:widgets_app/presentation/widgets/side_menu.dart';
 
 class HomeScreen extends StatelessWidget {
-
   static const String name = 'home_screen';
 
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(title: const Text("Widgets en Flutter + Material 3")),
       body: const _HomeView(),
-      drawer: const SideMenu(),
+      drawer: SideMenu(scaffoldKey: scaffoldKey),
     );
   }
 }
 
 class _HomeView extends StatelessWidget {
-
   const _HomeView();
 
   @override
@@ -49,7 +50,7 @@ class _CustomListTile extends StatelessWidget {
       trailing: Icon(Icons.arrow_forward_ios_outlined, color: colors.primary),
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subtitle),
-      onTap: (){
+      onTap: () {
         //context.pushNamed(ButtonsScreen.name);
         context.push(menuItem.link);
       },
